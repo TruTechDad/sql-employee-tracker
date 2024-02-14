@@ -3,9 +3,9 @@ const inquirer = require('inquirer');
 require('console.table');
 
 const db = mysql.createConnection({
-    database: 'employee_db',
+    database: 'employee_tracker_db',
     user: 'root',
-}, console.log('Connected to the employee_db database.'));
+}, console.log('Connected to the employee_tracker_db database.'));
 
 const prompt = inquirer.createPromptModule();
 
