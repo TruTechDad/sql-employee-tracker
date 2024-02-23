@@ -5,6 +5,7 @@ require('console.table');
 const db = mysql.createConnection({
     database: 'employee_tracker_db',
     user: 'root',
+    host: '127.0.0.1',
 });
 
 const prompt = inquirer.createPromptModule();
@@ -34,13 +35,15 @@ const start = () => {
                 });
                 break;
 
-            case 'Add Role':
-                addRole();
-                break;
+                case 'Add Role':
+                    console.log("Adding a new role...");
+                    addRole();
+                    break;
 
             // Add cases for other options
 
             case 'Exit':
+                console.log("Exiting application...");
                 db.end();
                 console.log('Goodbye!');
                 break;
@@ -49,6 +52,7 @@ const start = () => {
 };
 
 const addRole = () => {
+    console.log("Prompting user to add a new role...");
     inquirer
         .prompt([
             {
