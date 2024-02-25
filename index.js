@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 require('console.table');
 
 const db = mysql.createConnection({
-    database: 'employee_tracker_db',
+    database: 'employee_db',
     user: 'root',
     host: '127.0.0.1',
 });

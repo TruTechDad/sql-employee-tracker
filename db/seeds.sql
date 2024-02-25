@@ -1,7 +1,7 @@
-USE employee_tracker_db;
+USE employee_db;
 
 -- Departments 
-INSERT INTO departments (name) 
+INSERT INTO departments (department_name) 
 VALUES ('Engineering'),
         ('Operations'),
         ('Security'),
