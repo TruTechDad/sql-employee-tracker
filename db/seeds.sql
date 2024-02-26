@@ -1,7 +1,7 @@
-USE employee_db;
+USE employee_tracker_db;
 
 -- Departments 
-INSERT INTO departments (department_name) 
+INSERT INTO departments(department_name) 
 VALUES ('Engineering'),
         ('Operations'),
         ('Security'),
@@ -14,7 +14,7 @@ VALUES ('Engineering'),
         ('Community Outreach');
 
 -- Roles 
-INSERT INTO roles (title, salary, department_id) 
+INSERT INTO roles(title, salary, department_id) 
 VALUES ('CEO and President', 200000, 5),
         ('Head of Operations', 150000, 2),
         ('Security Consultant', 120000, 3),

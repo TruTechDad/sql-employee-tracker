@@ -1,6 +1,5 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const connection = require("./config/connection.js");
 require('console.table');
 
 const db = mysql.createConnection({
@@ -14,7 +13,7 @@ const prompt = inquirer.createPromptModule();
 const start = () => {
     prompt({
         message: 'Choose an option',
-        type: 'rawlist',
+        type: 'list',
         name: 'view',
         choices: [
             'View All Employees',
@@ -26,32 +25,52 @@ const start = () => {
             'Add Department',
             'Exit'
         ]
-    }).then((answers) => {
-        switch (answers.view) {
-            case 'View All Employees':
-                db.query('SELECT * FROM employee', (error, employees) => {
-                    if (error) console.error(error);
-                    console.table(employees);
-                    start();
-                });
-                break;
+//     }).then((answers) => {
+//         switch (answers.view) {
+//             case 'View All Employees':
+//                 db.query('SELECT * FROM employees', (error, employees) => {
+//                     if (error) console.error(error);
+//                     console.table(employees);
+//                     start();
+//                 });
+//                 break;
 
-                case 'Add Role':
-                    console.log("Adding a new role...");
-                    addRole();
-                    break;
+//                 case 'Add Role':
+//                     console.log("Adding a new role...");
+//                     addRole();
+//                     break;
 
-            // Add cases for other options
+//             // Add cases for other options
 
-            case 'Exit':
-                console.log("Exiting application...");
-                db.end();
-                console.log('Goodbye!');
-                break;
-        }
-    });
+//             case 'Exit':
+//                 console.log("Exiting application...");
+//                 db.end();
+//                 console.log('Goodbye!');
+//                 break;
+//         }
+//     });
+// };
+}).then((answer) => {
+    switch (answer.option) {
+        case 'View All Employees':
+            showEmployees();
+            break;
+        case 'View All Roles':
+            showRoles();
+            break;
+        case 'View All Departments':
+            showDepartments();
+            break;
+        case 'View All Employees By Department':
+            showEmployeesByDept();
+            break;
+        case 'Exit':
+            console.log('Exiting...');
+            connection.end();
+            break;
+    }
+});
 };
-
 const addRole = () => {
     console.log("Prompting user to add a new role...");
     inquirer
