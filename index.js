@@ -103,8 +103,39 @@ const showRoles = () => {
 };
 
 const addEmployee = () => {
-    console.log('Implement logic to add an employee');
-    promptUser();
+    console.log('Add Employee');
+    inquirer
+        .prompt([
+            {
+                name: "first_name",
+                type: "input",
+                message: "Enter employee's first name:"
+            },
+            {
+                name: "last_name",
+                type: "input",
+                message: "Enter employee's last name:"
+            },
+            {
+                name: "role_id",
+                type: "number",
+                message: "Enter employee's role ID:"
+            },
+            {
+                name: "manager_id",
+                type: "number",
+                message: "Enter employee's manager ID:"
+            }
+        ])
+        .then((answers) => {
+            // Implement logic to add the employee to the database
+            console.log("Employee added successfully!");
+            promptUser();
+        })
+        .catch((error) => {
+            console.error("Error adding employee:", error);
+            promptUser();
+        });
 };
 
 const viewEmployeesByManager = () => {
