@@ -139,8 +139,24 @@ const addEmployee = () => {
 };
 
 const viewEmployeesByManager = () => {
-    console.log('Implement logic to view employees by manager');
-    promptUser();
+    console.log('View Employees by Manager');
+    inquirer
+        .prompt([
+            {
+                name: "manager_id",
+                type: "number",
+                message: "Enter manager's ID to view employees:"
+            }
+        ])
+        .then((answers) => {
+            // Implement logic to fetch employees by manager ID from the database
+            console.log(`Viewing employees for manager with ID ${answers.manager_id}`);
+            promptUser();
+        })
+        .catch((error) => {
+            console.error("Error viewing employees by manager:", error);
+            promptUser();
+        });
 };
 
 
