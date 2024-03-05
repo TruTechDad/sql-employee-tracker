@@ -160,13 +160,13 @@ const showEmployeesByManager = () => {
 };
 const showAllRoles = () => {
     console.log('View All Roles');
-    const sql = 'SELECT * FROM roles'; // SQL query to fetch all roles
+    const sql = 'SELECT * FROM roles'; 
 
     // Execute the query
     db.promise().query(sql)
         .then(([rows, fields]) => {
-            console.table(rows); // Display the result in a table format
-            promptUser(); // Prompt the user for next action
+            console.table(rows); 
+            promptUser(); 
         })
         .catch((error) => {
             console.error("Error fetching roles:", error);
@@ -212,13 +212,13 @@ const addRole = () => {
 };
 const showAllDepartments = () => {
     console.log('View All Departments');
-    const sql = 'SELECT * FROM departments'; // SQL query to fetch all departments
+    const sql = 'SELECT * FROM departments'; 
 
     // Execute the query
     db.promise().query(sql)
         .then(([rows, fields]) => {
-            console.table(rows); // Display the result in a table format
-            promptUser(); // Prompt the user for next action
+            console.table(rows); 
+            promptUser(); 
         })
         .catch((error) => {
             console.error("Error fetching departments:", error);
