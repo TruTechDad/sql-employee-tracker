@@ -69,10 +69,15 @@ const start = () => {
             case 'Add Department':
                 addDepartment();
                 break;
+            // case 'Delete Department':
+            //     deleteDepartment();
+            //     break;
+                    
             case 'Exit':
                 console.log('Exiting...');
-                connection.end();
+                db.end(); // Use db.end() to close the database connection
                 break;
+                
             // default:
             //     console.log('Invalid option');
             //     start();
@@ -271,6 +276,36 @@ const addDepartment = () => {
             promptUser();
         });
 };
+
+// const deleteDepartment = () => {
+//     console.log("Starting deleteDepartment function...");
+//     inquirer
+//         .prompt([
+//             {
+//                 name: 'department_id',
+//                 type: 'number',
+//                 message: 'Enter the ID of the department you want to delete:'
+//             }
+//         ])
+//         .then((answers) => {
+//             console.log("User entered department ID:", answers.department_id);
+//             const sql = 'DELETE FROM departments WHERE id = ?';
+//             db.query(sql, [answers.department_id], (error, result) => {
+//                 if (error) {
+//                     console.error("Error deleting department:", error);
+//                 } else {
+//                     console.log("Department deleted successfully!");
+//                 }
+//                 promptUser();
+//             });
+//         })
+//         .catch((error) => {
+//             console.error("Error deleting department:", error);
+//             promptUser();
+//         });
+// };
+
+
 
 const promptUser = () => {
     start();
