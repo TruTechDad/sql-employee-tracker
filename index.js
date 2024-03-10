@@ -255,14 +255,14 @@ const addDepartment = () => {
     inquirer
         .prompt([
             {
-                name: 'name',
+                name: 'department_name',
                 type: 'input',
                 message: 'Enter department name:'
             }
         ])
         .then((answer) => {
-            const sql = 'INSERT INTO departments (name) VALUES (?)';
-            db.query(sql, [answer.name], (error, result) => {
+            const sql = 'INSERT INTO departments (department_name) VALUES (?)'; // Change 'name' to 'department_name'
+            db.query(sql, [answer.department_name], (error, result) => {
                 if (error) {
                     console.error("Error adding department:", error);
                 } else {
@@ -276,6 +276,7 @@ const addDepartment = () => {
             promptUser();
         });
 };
+
 
 // const deleteDepartment = () => {
 //     console.log("Starting deleteDepartment function...");
